@@ -7,8 +7,8 @@ type RatingPropsType = {
     setRaitingValue: (value: RatingValueType) => void
 }
 
-export function Rating(props: RatingPropsType) {
-    console.log("Rating rendering")
+export function Raiting(props: RatingPropsType) {
+    console.log("Raiting rendering")
     return (
         <div>
             <Star selected={props.value > 0} setRaitingValue={() => props.setRaitingValue(1)}/>

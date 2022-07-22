@@ -1,25 +1,20 @@
 import React, {useState} from 'react';
 import './App.css';
 import Accordion from "../../kabzda-kak-prosto/src/Components/Accordion/Accordion";
-import {Rating, RatingValueType} from "./Components/Rating/Rating";
+import {Raiting, RatingValueType} from "../../kabzda-kak-prosto/src/Components/Raiting/Raiting";
 import {UncontrolledOnOff} from "./Components/UncontrolledOnOff/UncontrolledOnOff";
 import UncontrolledAccordion from "./Components/UncontrolledAccordion/UncontrolledAccordion";
 import {UncontrolledRaiting} from "./Components/UncontrolledRaiting/UncontrolledRaiting";
 import {OnOff} from "./Components/OnOff/OnOff";
 
-
 function App() {
     console.log("App rendering")
 
-    const [raitingValue, setRaitingValue] = useState<RatingValueType>(0);
+    let [raitingValue, setRaitingValue] = useState<RatingValueType>(0);
 
-    const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(true);
+    let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(true);
 
-    const [switchOn, setSwitchOn] = useState(false);
-
-    //need any cod?
-    const onChange = (value: RatingValueType) => {
-    }
+    let [switchOn, setSwitchOn] = useState(false);
 
     return (
         <div className="App">
@@ -28,8 +23,8 @@ function App() {
             <UncontrolledOnOff changeOn={setSwitchOn}/> {switchOn.toString()}
             <UncontrolledAccordion titleValue={"Menu"}/>
             <UncontrolledAccordion titleValue={"Users"}/>
-            <UncontrolledRaiting onChange={onChange}/>
-            <Rating value={raitingValue} setRaitingValue={setRaitingValue}/>
+            <UncontrolledRaiting/>
+            <Raiting value={raitingValue} setRaitingValue={setRaitingValue}/>
             <Accordion titleValue={"Offers"} collapsed={accordionCollapsed} setAccordionCollapsed={setAccordionCollapsed}/>
             <OnOff on={switchOn} onChange={setSwitchOn}/>
         </div>
