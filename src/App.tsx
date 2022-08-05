@@ -7,6 +7,12 @@ import UncontrolledAccordion from "./Components/UncontrolledAccordion/Uncontroll
 import {UncontrolledRaiting} from "./Components/UncontrolledRaiting/UncontrolledRaiting";
 import {OnOff} from "./Components/OnOff/OnOff";
 
+const items = [
+    {title: 'Diana', value: 1},
+    {title: 'Karina', value: 2},
+    {title: 'Uliana', value: 3},
+    {title: 'Lilia', value: 4}
+];
 
 function App() {
     console.log("App rendering")
@@ -21,6 +27,9 @@ function App() {
     const onChange = (value: RatingValueType) => {
     }
 
+    const onClick = (value: any) => {
+    }
+
     return (
         <div className="App">
             <PageTitle title={"Hello, samurai! Let's go!"}/>
@@ -30,8 +39,14 @@ function App() {
             <UncontrolledAccordion titleValue={"Users"}/>
             <UncontrolledRaiting onChange={onChange}/>
             <Rating value={raitingValue} setRaitingValue={setRaitingValue}/>
-            <Accordion titleValue={"Offers"} collapsed={accordionCollapsed} setAccordionCollapsed={setAccordionCollapsed}/>
-            <OnOff on={switchOn} onChange={setSwitchOn}/>
+            <Accordion
+                titleValue={"Offers"}
+                collapsed={accordionCollapsed}
+                setAccordionCollapsed={setAccordionCollapsed}
+                items={items}
+                onClick={onClick}
+            />
+            <OnOff on={switchOn} onChange={setSwitchOn} />
         </div>
     );
 }
