@@ -1,29 +1,14 @@
-import React, {useReducer, useState} from "react";
+import React, {useReducer} from "react";
+import {reducer, TOGGLE_CONSTANT} from "./reducer";
 
 type UncontrolledAccordionPropsType = {
     titleValue: string
-}
-type ActionType = {
-    type: string
-}
-
-const TOGGLE_CONSTANT = "TOGGLE-COLLAPSED"
-
-const reducer = (state: boolean, action: ActionType) => {
-    switch (action.type) {
-        case TOGGLE_CONSTANT:
-            return !state;
-        default:
-            throw new Error('Bad action type')
-    }
-    return state;
 }
 
 function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
     console.log("Accordion rendering")
 
-    //local state для состояния AccordionBody (свёрнут/развёрнут)
-    // let [collapsed, setCollapsed] = useState(false);
+    //local state для состояния AccordionBody (свёрнут/развёрнут) changed to useReducer:
     let [collapsed, dispatch] = useReducer(reducer, false);
 
     //функция обработчик события клика по AccordionTitle
