@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import {Select} from "../Components/Select/Select";
 
 export default {
@@ -133,10 +133,20 @@ export const LikeUseCallback = () => {
         }
     }, [books]);
 
+    //useCallback:
+    const memoizedAddBook2 = useCallback(() => {
+        return () => {
+            console.log(books)
+            const newBooks = [...books, 'Angular' + new Date().getTime()];
+            setBooks(newBooks);
+        }
+    }, [books]);
+
     return <>
         <button onClick={() => setCounter(counter + 1)}>+</button>
         {counter}
-        <Book addBook={memoizedAddBook}/>
+        {/*<Book addBook={memoizedAddBook}/>*/}
+        <Book addBook={memoizedAddBook2}/>
     </>
 }
 
