@@ -1,9 +1,9 @@
 import React, {useState, KeyboardEvent, useEffect} from "react";
 import styles from './Select.module.css'
 
-type ItemType = {
+ type ItemType = {
     title: string
-    value: any
+    value?: any
 }
 
 type SelectPropsType = {
