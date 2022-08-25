@@ -12,9 +12,9 @@ function generateData(){
 export const Example1 = () => {
     console.log("Example1");
 
-    const initValue = useMemo(generateData, []);
+    //const initValue = useMemo(generateData, []);
 
-    const [counter, setCounter] = useState(initValue);
+    const [counter, setCounter] = useState(generateData);
 
     return <>
         <button onClick={() => setCounter(counter + 1)}>+</button>
