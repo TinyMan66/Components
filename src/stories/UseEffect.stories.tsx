@@ -34,6 +34,7 @@ export const SimpleExample = () => {
 }
 
 export const SetTimeoutExample = () => {
+
     const [fake, setFake] = useState(1);
     const [counter, setCounter] = useState(1);
 
