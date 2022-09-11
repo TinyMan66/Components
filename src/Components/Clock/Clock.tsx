@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 
 type PropsType = {
 }
+const getTwoDigitsString = (num: number) => num < 10 ? ` 0${num}` : num;
 
 export const Clock: React.FC<PropsType> = (props) => {
 
@@ -14,10 +15,10 @@ export const Clock: React.FC<PropsType> = (props) => {
     }, []);
 
     return <div>
-        <span>{date.getHours()}</span>
+        <span>{getTwoDigitsString(date.getHours())}</span>
         :
-        <span>{date.getMinutes()}</span>
+        <span>{getTwoDigitsString(date.getMinutes())}</span>
         :
-        <span>{date.getSeconds()}</span>
+        <span>{getTwoDigitsString(date.getSeconds())}</span>
     </div>
 }
