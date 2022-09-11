@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 type PropsType = {
 }
@@ -7,9 +7,11 @@ export const Clock: React.FC<PropsType> = (props) => {
 
     const [date, setDate] = useState(new Date());
 
-    setInterval(() => {
-        setDate(new Date());
-    }, 1000)
+    useEffect(() => {
+        setInterval(() => {
+            setDate(new Date());
+            }, 1000)
+    }, []);
 
     return <div>
         <span>{date.getHours()}</span>
