@@ -69,25 +69,23 @@ export const SetIntervalExample = () => {
         Hello, counter: {counter}
     </>
 }
+export const ResetEffectExample = () => {
+    const [counter, setCounter] = useState(0);
 
-export const ClockExample = () => {
+    console.log("Component rendered with " + counter);
 
-    const [seconds, setSeconds] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [hours, setHours] = useState(0);
-
-    console.log("ClockExample");
-
+    const increase = () => {setCounter(counter + 1)};
     useEffect(() => {
-        setInterval(() => {
-            let date = new Date();
-            setHours(date.getHours())
-            setMinutes(date.getMinutes())
-            setSeconds(date.getSeconds())
-        }, 1000);
-    }, [] );
+        console.log("Effect occurred " + counter)
+
+        return () => {
+            console.log("RESET EFFECT " + counter)
+        }
+    }, [counter] );
+
 
     return <>
-        Hello, time: {hours}:{minutes}:{seconds}
+        Hello, counter: {counter} <button onClick={increase}>+</button>
     </>
 }
+
