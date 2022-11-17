@@ -60,9 +60,13 @@ export const SetIntervalExample = () => {
     console.log("SetIntervalExample");
 
     useEffect(() => {
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             setCounter(state => state + 1)
         }, 1000);
+
+        return () => {
+            clearInterval(intervalId)
+        }
     }, []);
 
     return <>
@@ -110,9 +114,28 @@ export const KeysTrackerExample = () => {
         }
     }, [text]);
 
-
     return <>
         Typed text: {text}
+    </>
+}
+export const SetTimeoutSecondExample = () => {
+    const [text, setText] = useState("");
+
+    console.log("Component rendered with " + text);
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            console.log("TIMEOUT EXPIRED")
+            setText("3 seconds have passed")
+        }, 3000)
+
+        return () => {
+            clearTimeout(timeoutId)
+        }
+    }, [text]);
+
+    return <>
+       Text: {text}
     </>
 }
 
